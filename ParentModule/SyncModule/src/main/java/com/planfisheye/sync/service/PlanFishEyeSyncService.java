@@ -1,5 +1,13 @@
 package com.planfisheye.sync.service;
 
-public interface PlanFishEyeSyncService {
+import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import com.planfisheye.sync.exception.PlanFishEyeSyncDatabaseException;
+import com.planfisheye.sync.model.Contacts;
+@Service
+public interface PlanFishEyeSyncService 
+{
+	List<Contacts> getContacts() throws PlanFishEyeSyncDatabaseException;
 }

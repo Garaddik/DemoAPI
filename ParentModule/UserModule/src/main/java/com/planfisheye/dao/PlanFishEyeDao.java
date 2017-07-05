@@ -9,6 +9,4 @@ import com.planfisheye.model.User;
 public interface PlanFishEyeDao 
 {
 	User login(User user) throws PlanFishEyeDatabaseException;
-
-	
 }
