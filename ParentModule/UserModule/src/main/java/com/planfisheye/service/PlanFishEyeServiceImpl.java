@@ -21,15 +21,17 @@ public class PlanFishEyeServiceImpl implements PlanFishEyeService
 	
 	@Override
 	public User login(User user) throws PlanFishEyeDatabaseException {
+		System.out.println("service");
 		logger.info(AppConstants.STARTMETHOD + "login");
 		User userResponse = dao.login(user);
+		System.out.println("service after dao");
 
 		if (null != userResponse) 
 		{
-			logger.debug("Valid user : " + user.getEmail());
+			logger.debug("Valid user : " + user.getUserName());
 
 		} else {
-			logger.debug("InValid User: " + user.getEmail());
+			logger.debug("InValid User: ");
 		}
 		logger.info(AppConstants.ENDMETHOD + "login");
 		return userResponse;

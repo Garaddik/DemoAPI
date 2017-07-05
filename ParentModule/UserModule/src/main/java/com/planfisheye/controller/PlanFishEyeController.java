@@ -34,7 +34,6 @@ public class PlanFishEyeController
 	@RequestMapping(value = "/")
 	public ModelAndView index(Model model, HttpSession session, HttpServletResponse response,
 			HttpServletRequest request) {
-		System.out.println("here");
 		ModelAndView view = new ModelAndView("login", "user", new User());
 		view.setViewName("login");
 		return view;
@@ -63,9 +62,11 @@ public class PlanFishEyeController
 			HttpServletResponse response, HttpServletRequest request, BindingResult result) {
 		logger.debug(AppConstants.STARTMETHOD + "login");
 		try {
-
+			System.out.println("controller1");
 			User userResponse = service.login(user);
+			System.out.println("controller after service");
 			if (null != userResponse) {
+				System.out.println(userResponse.getUserName());
 				session.setAttribute("user", userResponse);
 				view = new ModelAndView("dashboard", "user", user);
 			} else {
@@ -74,7 +75,7 @@ public class PlanFishEyeController
 			}
 		}catch (PlanFishEyeDatabaseException e2) {
 			model.addAttribute("Error", e2.getMessage());
-			logger.error(AppConstants.ERRORMETHOD + " login. RetailerID:"+user.getEmail()+". Error:"+e2.getMessage());
+			logger.error(AppConstants.ERRORMETHOD + " login. RetailerID:"+user.getUserName()+". Error:"+e2.getMessage());
 			view = new ModelAndView("login", "user", user);
 		}catch (Exception e) {
 			model.addAttribute("Error",e.getMessage());

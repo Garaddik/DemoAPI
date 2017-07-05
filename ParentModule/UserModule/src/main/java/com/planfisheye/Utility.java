@@ -37,6 +37,7 @@ public class Utility {
 	}
 
 	public static Jongo getDBConnection() throws PlanFishEyeDatabaseException {
+		System.out.println("utility");
 		Jongo jongo = null;
 		logger.info(AppConstants.STARTMETHOD + " Jongo framework connections");
 		try {

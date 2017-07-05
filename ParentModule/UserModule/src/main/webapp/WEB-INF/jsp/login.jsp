@@ -11,6 +11,10 @@
 
 <body>
 <h1>Login Page</h1>
-	
+<form:form action="login" id="authentication" method="post"  commandName="user">
+	<form:input type="text" id="userName" path="userName" name="userName" placeholder="User Name" />
+	<form:input type="password" path="password" id="password" name="password" placeholder="Password" />
+	<input type="submit" value="Sign In" class="btn btn-primary btn-block" />								
+</form:form>
 </body>
 </html>
