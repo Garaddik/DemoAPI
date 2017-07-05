@@ -31,7 +31,7 @@ public class PlanFishEyeSyncController
 	@Autowired
 	PlanFishEyeSyncService service;
 	
-	@RequestMapping(method=RequestMethod.GET, value="/sync",
+	@RequestMapping(method=RequestMethod.GET, value="/sync/contactsList",
 			produces = "application/json")
 	public List<Contacts> getContactsList() {
 		List<Contacts> contactsList=null;

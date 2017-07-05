@@ -32,7 +32,7 @@ public class PlanFishEyeController
 	
 	private static final Logger logger = LoggerFactory.getLogger(PlanFishEyeController.class);
 			
-	@RequestMapping(method=RequestMethod.GET, value="/user/{username}",
+	@RequestMapping(method=RequestMethod.GET, value="/users/{username}",
 			produces = "application/json")
 	public User getUserByUserName(@PathVariable String username ) {
 		logger.debug(AppConstants.STARTMETHOD + "login");
