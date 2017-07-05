@@ -20,21 +20,20 @@ public class PlanFishEyeServiceImpl implements PlanFishEyeService
 	private static final Logger logger = LoggerFactory.getLogger(PlanFishEyeServiceImpl.class);
 	
 	@Override
-	public User login(User user) throws PlanFishEyeDatabaseException {
+	public User getUserByUserName(	String username) throws PlanFishEyeDatabaseException {
 		System.out.println("service");
 		logger.info(AppConstants.STARTMETHOD + "login");
-		User userResponse = dao.login(user);
+		User userResponse = dao.getUserByUserName(username);
 		System.out.println("service after dao");
 
 		if (null != userResponse) 
 		{
-			logger.debug("Valid user : " + user.getUserName());
+			return userResponse;
 
 		} else {
-			logger.debug("InValid User: ");
+			return null;
 		}
-		logger.info(AppConstants.ENDMETHOD + "login");
-		return userResponse;
+		
 	}
 
 

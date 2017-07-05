@@ -9,5 +9,5 @@ import com.planfisheye.model.User;
 @Service
 public interface PlanFishEyeService 
 {
-	User login(User user) throws PlanFishEyeDatabaseException;
+	User getUserByUserName(	String username) throws PlanFishEyeDatabaseException;
 }

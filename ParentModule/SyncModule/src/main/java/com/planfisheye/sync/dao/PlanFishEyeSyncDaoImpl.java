@@ -20,7 +20,7 @@ import com.planfisheye.sync.model.Contacts;
 public class PlanFishEyeSyncDaoImpl implements PlanFishEyeSyncDao{
 	private static final Logger logger = LoggerFactory.getLogger(PlanFishEyeSyncDaoImpl.class);
 	@Override
-	public List<Contacts> getContacts() throws PlanFishEyeSyncDatabaseException {
+	public List<Contacts> getContactsList() throws PlanFishEyeSyncDatabaseException {
 		logger.info(AppConstants.STARTMETHOD + "getContacts");
 		Jongo jongo;
 		List<Contacts> ContactsList = null;

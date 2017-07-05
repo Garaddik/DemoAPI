@@ -8,5 +8,5 @@ import com.planfisheye.model.User;
 @Component
 public interface PlanFishEyeDao 
 {
-	User login(User user) throws PlanFishEyeDatabaseException;
+	User getUserByUserName(String username) throws PlanFishEyeDatabaseException;
 }

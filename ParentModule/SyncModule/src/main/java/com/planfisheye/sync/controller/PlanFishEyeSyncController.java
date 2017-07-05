@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.planfisheye.sync.AppConstants;
@@ -21,37 +23,30 @@ import com.planfisheye.sync.model.Contacts;
 import com.planfisheye.sync.service.PlanFishEyeSyncService;
 
 
-@Controller
+@RestController
+@RequestMapping("/planfisheyesync")
 public class PlanFishEyeSyncController 
 {
 	private static final Logger logger = LoggerFactory.getLogger(PlanFishEyeSyncController.class);
 	@Autowired
 	PlanFishEyeSyncService service;
 	
-	@RequestMapping("/contacts")
-	public ModelAndView loginPage(Model model, HttpSession session, HttpServletResponse response,
-			HttpServletRequest request) {
-		ModelAndView view = null;
+	@RequestMapping(method=RequestMethod.GET, value="/sync",
+			produces = "application/json")
+	public List<Contacts> getContactsList() {
+		List<Contacts> contactsList=null;
 		try {
-			List<Contacts> contactsList = service.getContacts();
+			contactsList = service.getContactsList();
 			System.out.println("controller after service");
-			if (null != contactsList) {				
-				session.setAttribute("contacts", contactsList);
-				view = new ModelAndView("contacts", "contacts", contactsList);
-			} else {
-				model.addAttribute("Error", "No Contacts");
-				view = new ModelAndView("contacts", "contacts", new ArrayList<Contacts>());
+			if (null == contactsList) {	
+				contactsList=new ArrayList<Contacts>();
 			}
 		}catch (PlanFishEyeSyncDatabaseException e2) {
-			model.addAttribute("Error", e2.getMessage());
-			logger.error(AppConstants.ERRORMETHOD + " Contact List Error:"+e2.getMessage());
-			view = new ModelAndView("contacts", "contacts", new ArrayList<Contacts>());
+			logger.error("getContactsList Error:"+e2.getMessage());
 		}catch (Exception e) {
-			model.addAttribute("Error",e.getMessage());
-			logger.error(AppConstants.ERRORMETHOD + " Contact List Error:"+e.getMessage());
-			view = new ModelAndView("contacts", "contacts", new ArrayList<Contacts>());
+			logger.error("getContactsList Error:"+e.getMessage());
 		 }
 		logger.debug(AppConstants.ENDMETHOD + "login");
-		return view;
+		return contactsList;
 	}
 }

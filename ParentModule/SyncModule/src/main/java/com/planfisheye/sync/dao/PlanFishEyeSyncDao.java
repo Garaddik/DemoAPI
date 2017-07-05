@@ -10,5 +10,5 @@ import com.planfisheye.sync.model.Contacts;
 @Component
 public interface PlanFishEyeSyncDao 
 {
-	List<Contacts> getContacts() throws PlanFishEyeSyncDatabaseException;
+	List<Contacts> getContactsList() throws PlanFishEyeSyncDatabaseException;
 }

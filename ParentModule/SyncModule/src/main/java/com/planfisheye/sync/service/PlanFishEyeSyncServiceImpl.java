@@ -19,9 +19,9 @@ public class PlanFishEyeSyncServiceImpl implements PlanFishEyeSyncService
 	PlanFishEyeSyncDao dao;
 	
 	@Override
-	public List<Contacts> getContacts() throws PlanFishEyeSyncDatabaseException {
+	public List<Contacts> getContactsList() throws PlanFishEyeSyncDatabaseException {
 		logger.info(AppConstants.STARTMETHOD + "login");
-		List<Contacts> contactsList = dao.getContacts();
+		List<Contacts> contactsList = dao.getContactsList();
 		System.out.println("service after dao");
 		logger.info(AppConstants.ENDMETHOD + "login");
 		return contactsList;

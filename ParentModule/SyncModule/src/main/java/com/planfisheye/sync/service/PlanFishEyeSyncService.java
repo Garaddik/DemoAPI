@@ -9,5 +9,5 @@ import com.planfisheye.sync.model.Contacts;
 @Service
 public interface PlanFishEyeSyncService 
 {
-	List<Contacts> getContacts() throws PlanFishEyeSyncDatabaseException;
+	List<Contacts> getContactsList() throws PlanFishEyeSyncDatabaseException;
 }

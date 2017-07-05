@@ -18,13 +18,13 @@ public class PlanFishEyeDaoImpl implements PlanFishEyeDao
 {
 	private static final Logger logger = LoggerFactory.getLogger(PlanFishEyeDaoImpl.class);
 	@Override
-	public User login(User user) throws PlanFishEyeDatabaseException {
+	public User getUserByUserName(String username) throws PlanFishEyeDatabaseException {
 		logger.info(AppConstants.STARTMETHOD + "login");
 		System.out.println("dao");
 		Jongo jongo = Utility.getDBConnection();
 		System.out.println("dao after utility");
 		MongoCollection users = jongo.getCollection("user");
-		User userResponse = users.findOne("{username:#,password:#}", user.getUserName(), user.getPassword()).as(User.class);
+		User userResponse = users.findOne("{username:#}",username).as(User.class);
 		System.out.println(userResponse.getUserName());
 		logger.info(AppConstants.ENDMETHOD + "login");
 		return userResponse;
