@@ -4,7 +4,7 @@ public class Contacts
 {
 	private String name;
 	private String type;
-	private long contactNumber;
+	private String contactNumber;
 	public String getName() {
 		return name;
 	}
@@ -17,10 +17,10 @@ public class Contacts
 	public void setType(String type) {
 		this.type = type;
 	}
-	public long getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
-	public void setContactNumber(long contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 	

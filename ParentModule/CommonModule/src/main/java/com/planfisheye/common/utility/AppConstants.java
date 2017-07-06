@@ -1,4 +1,4 @@
-package com.planfisheye.sync;
+package com.planfisheye.common.utility;
 
 public class AppConstants {
 

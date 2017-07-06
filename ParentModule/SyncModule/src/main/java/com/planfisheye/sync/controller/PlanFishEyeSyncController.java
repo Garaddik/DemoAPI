@@ -3,22 +3,15 @@ package com.planfisheye.sync.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.planfisheye.sync.AppConstants;
-import com.planfisheye.sync.exception.PlanFishEyeSyncDatabaseException;
+import com.planfisheye.common.Exception.PlanFishEyeDatabaseException;
+import com.planfisheye.common.utility.AppConstants;
 import com.planfisheye.sync.model.Contacts;
 import com.planfisheye.sync.service.PlanFishEyeSyncService;
 
@@ -41,7 +34,7 @@ public class PlanFishEyeSyncController
 			if (null == contactsList) {	
 				contactsList=new ArrayList<Contacts>();
 			}
-		}catch (PlanFishEyeSyncDatabaseException e2) {
+		}catch (PlanFishEyeDatabaseException e2) {
 			logger.error("getContactsList Error:"+e2.getMessage());
 		}catch (Exception e) {
 			logger.error("getContactsList Error:"+e.getMessage());

@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.planfisheye.sync.AppConstants;
-import com.planfisheye.sync.Utility;
-import com.planfisheye.sync.exception.PlanFishEyeSyncDatabaseException;
+import com.planfisheye.common.Exception.PlanFishEyeDatabaseException;
+import com.planfisheye.common.utility.AppConstants;
+import com.planfisheye.common.utility.Utility;
 import com.planfisheye.sync.model.Contacts;
 
 
@@ -20,23 +20,27 @@ import com.planfisheye.sync.model.Contacts;
 public class PlanFishEyeSyncDaoImpl implements PlanFishEyeSyncDao{
 	private static final Logger logger = LoggerFactory.getLogger(PlanFishEyeSyncDaoImpl.class);
 	@Override
-	public List<Contacts> getContactsList() throws PlanFishEyeSyncDatabaseException {
+	public List<Contacts> getContactsList() throws PlanFishEyeDatabaseException {
 		logger.info(AppConstants.STARTMETHOD + "getContacts");
 		Jongo jongo;
 		List<Contacts> ContactsList = null;
 
 		try {
-			jongo = Utility.getDBConnection();
-			MongoCollection Contactss = jongo.getCollection("contacts");
+			jongo = Utility.getDBConnection("fisheye");
+			MongoCollection contacts = jongo.getCollection("contacts");
 			MongoCursor<Contacts> masterList = null;
-			masterList = Contactss.find().as(Contacts.class);
+			System.out.println(contacts.find().as(Contacts.class).count());
+			masterList = contacts.find().as(Contacts.class);
 			ContactsList = new ArrayList<Contacts>();
+			
 			while (masterList.hasNext()) {
-				ContactsList.add(masterList.next());
+				Contacts c=masterList.next();
+				ContactsList.add(c);
+				System.out.println("<<<<<<<<<<<"+c.getName());
 			}
 		} catch (Exception e) {
 			logger.error("getContacts error: " + e.getMessage());
-			throw new PlanFishEyeSyncDatabaseException(503, e.getMessage());
+			throw new PlanFishEyeDatabaseException(503, e.getMessage());
 		}
 		logger.info(AppConstants.ENDMETHOD + "getContacts");
 		return ContactsList;

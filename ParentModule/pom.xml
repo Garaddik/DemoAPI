@@ -108,5 +108,6 @@
 	<modules>
 		<module>UserModule</module>
 		<module>SyncModule</module>
+		<module>CommonModule</module>
 	</modules>
 </project>

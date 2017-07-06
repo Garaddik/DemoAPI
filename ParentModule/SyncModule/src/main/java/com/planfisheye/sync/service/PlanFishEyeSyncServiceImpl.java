@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.planfisheye.sync.AppConstants;
+import com.planfisheye.common.Exception.PlanFishEyeDatabaseException;
+import com.planfisheye.common.utility.AppConstants;
 import com.planfisheye.sync.dao.PlanFishEyeSyncDao;
-import com.planfisheye.sync.exception.PlanFishEyeSyncDatabaseException;
 import com.planfisheye.sync.model.Contacts;
 @Service
 public class PlanFishEyeSyncServiceImpl implements PlanFishEyeSyncService
@@ -19,7 +19,7 @@ public class PlanFishEyeSyncServiceImpl implements PlanFishEyeSyncService
 	PlanFishEyeSyncDao dao;
 	
 	@Override
-	public List<Contacts> getContactsList() throws PlanFishEyeSyncDatabaseException {
+	public List<Contacts> getContactsList() throws PlanFishEyeDatabaseException {
 		logger.info(AppConstants.STARTMETHOD + "login");
 		List<Contacts> contactsList = dao.getContactsList();
 		System.out.println("service after dao");

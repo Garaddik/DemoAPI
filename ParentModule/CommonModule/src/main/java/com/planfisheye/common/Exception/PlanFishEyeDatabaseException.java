@@ -1,4 +1,4 @@
-package com.planfisheye.dao.exception;
+package com.planfisheye.common.Exception;
 
 public class PlanFishEyeDatabaseException extends Exception
 {
