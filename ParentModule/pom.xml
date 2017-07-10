@@ -109,5 +109,6 @@
 		<module>UserModule</module>
 		<module>SyncModule</module>
 		<module>CommonModule</module>
+		<module>AppModule</module>
 	</modules>
 </project>

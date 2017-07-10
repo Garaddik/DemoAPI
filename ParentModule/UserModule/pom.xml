@@ -6,16 +6,6 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>UserModule</artifactId>
-  
-  <build>
-		<plugins>
-			<!-- Package as an executable jar/war -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
   <dependencies>
   	<dependency>
   		<groupId>com.planfisheye</groupId>
